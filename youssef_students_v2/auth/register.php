@@ -4,9 +4,9 @@ include '../config/db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $role     = $_POST['role']; // جاي من الفورم
+    $role     = $_POST['role']; 
 
-    // ممكن كمان تستخدم password_hash لتأمين كلمة المرور
+   
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO users (username, password, role) VALUES ('$username', '$hashed_password', '$role')";
@@ -55,3 +55,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
