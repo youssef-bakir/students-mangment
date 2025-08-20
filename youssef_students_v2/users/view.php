@@ -6,7 +6,7 @@ $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
 ?>
 
-<h3 class="mb-4">قائمة المستخدمين</h3>
+<h3 class="mb-4 text-center">📋 قائمة المستخدمين</h3>
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
