@@ -4,10 +4,15 @@ include '../config/db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $role     = $_POST['role']; // جاي من الفورم
 
-    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+    // ممكن كمان تستخدم password_hash لتأمين كلمة المرور
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO users (username, password, role) VALUES ('$username', '$hashed_password', '$role')";
     if ($conn->query($sql)) {
         header("Location: /youssef_students_v2/auth/login.php");
+        exit;
     } else {
         $error = "فشل التسجيل.";
     }
@@ -35,6 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="mb-3">
       <label class="form-label">كلمة المرور</label>
       <input type="password" name="password" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">الدور</label>
+      <select name="role" class="form-select" required>
+        <option value="user" selected>👤 مستخدم عادي</option>
+        <option value="admin">⭐ مدير (Admin)</option>
+      </select>
     </div>
     <button type="submit" class="btn btn-success">تسجيل</button>
     <a href="login.php" class="btn btn-link">رجوع لتسجيل الدخول</a>
