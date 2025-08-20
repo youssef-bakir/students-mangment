@@ -6,7 +6,7 @@ $sql = "SELECT t.*, u.username FROM teachers t JOIN users u ON t.added_by = u.id
 $result = $conn->query($sql);
 ?>
 
-<h3 class="mb-4">قائمة المعلمين</h3>
+
 <a href="add.php" class="btn btn-primary mb-3">➕ إضافة معلم</a>
 <h3 class="mb-4 text-center">📋 قائمة المعلمين</h3>
 
@@ -48,3 +48,4 @@ $result = $conn->query($sql);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
