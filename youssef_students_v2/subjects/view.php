@@ -3,12 +3,12 @@ include '../includes/header.php';
 include '../config/db.php';
 
 $user_id = $_SESSION['user_id'];
-$sql = "SELECT s.*, u.username FROM subjects s JOIN users u ON s.added_by = u.id WHERE s.added_by = $user_id";
+$sql = "SELECT s.*, u.username FROM subjects s JOIN users u ON s.added_by = u.id" ;
 $result = $conn->query($sql);
 ?>
 
-<h3 class="mb-4">قائمة المواد الدراسية</h3>
 <a href="add.php" class="btn btn-primary mb-3">➕ إضافة مادة</a>
+<h3 class="mb-4 text-center">📋 قائمة المواد الدراسية</h3>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
