@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
-        // ✅ التحقق من كلمة المرور المشفرة
+        
         if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['user_id'] = $row['id'];
-            $_SESSION['role'] = $row['role']; // علشان تستخدمها في الصلاحيات
+            $_SESSION['role'] = $row['role']; 
 
             header("Location: /youssef_students_v2/home.php");
             exit();
@@ -59,3 +59,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
