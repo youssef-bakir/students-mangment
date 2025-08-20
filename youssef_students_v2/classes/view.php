@@ -8,11 +8,8 @@ $sql = "SELECT c.*, u.username AS added_by_user
 $result = $conn->query($sql);
 ?>
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-  <h3>قائمة الصفوف الدراسية</h3>
   <a href="add.php" class="btn btn-success">➕ إضافة صف</a>
-</div>
-
+<h3 class="mb-4 text-center">📋 قائمة الفصول</h3>
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
