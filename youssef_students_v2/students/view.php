@@ -1,6 +1,7 @@
 <?php
 include '../includes/header.php';
 include '../config/db.php';
+$user_id = $_SESSION['user_id'];
 
 $sql = "SELECT s.*, u.username AS added_by_user
         FROM student_records s
@@ -8,11 +9,11 @@ $sql = "SELECT s.*, u.username AS added_by_user
 $result = $conn->query($sql);
 ?>
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-  <h3>قائمة الطلاب</h3>
   <a href="add.php" class="btn btn-success">➕ إضافة طالب</a>
-</div>
 
+
+  <h3 class="mb-4 text-center">📋 قائمة الطلاب</h3>
+  
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
