@@ -39,8 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <label class="form-label">السن</label>
     <input type="text" name="age" value="<?= $row['age'] ?>" class="form-control" required>
   </div>
-  <button type="submit" class="btn btn-warning">تعديل</button>
+  <button type="submit" class="btn btn-success">💾 حفظ التعديل</button>
   <a href="view.php" class="btn btn-secondary">رجوع</a>
+
 </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
