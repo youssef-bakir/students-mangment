@@ -3,21 +3,30 @@ session_start();
 include '../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
+    $username = trim($_POST['username']);
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE username='$username'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM users WHERE username = ? LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
-        if ($password === $row['password']) {
+        // ✅ التحقق من كلمة المرور المشفرة
+        if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['user_id'] = $row['id'];
+            $_SESSION['role'] = $row['role']; // علشان تستخدمها في الصلاحيات
+
             header("Location: /youssef_students_v2/home.php");
             exit();
+        } else {
+            $error = "❌ كلمة المرور غير صحيحة.";
         }
+    } else {
+        $error = "❌ اسم المستخدم غير موجود.";
     }
-    $error = "بيانات الدخول غير صحيحة.";
 }
 ?>
 
