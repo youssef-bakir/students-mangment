@@ -16,18 +16,18 @@ $result = $conn->query($sql);
   <table class="table table-bordered table-hover align-middle text-center">
     <thead class="table-dark">
       <tr>
-        <th>#</th> <!-- رقم تسلسلي -->
+        <th>#</th> 
         <th>اسم المستخدم</th>
         <th>الدور</th>
       </tr>
     </thead>
     <tbody>
       <?php 
-        $i = 1; // العداد يبدأ من 1
+        $i = 1; 
         while($row = $result->fetch_assoc()): 
       ?>
         <tr>
-          <td><?= $i++ ?></td> <!-- الرقم التسلسلي -->
+          <td><?= $i++ ?></td> 
           <td><?= $row['username'] ?></td>
           <td><?= $row['role'] ?></td>
         </tr>
@@ -38,3 +38,4 @@ $result = $conn->query($sql);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
